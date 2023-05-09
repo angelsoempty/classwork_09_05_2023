@@ -6,9 +6,14 @@ class School:
     def admit_student(self, student): #зарахування студентів
         self.students.append(student)
         print(f'{student.name} Був доданий до школи {self.name}') #дописати, коли створемо клас
-
     def expel_student(self, student):
-        pass
+        expelled_student = next(filter(lambda s: s.name == student.name
+                                       and s.grade == student.grade, self.students), None)
+        if expelled_student is not None:
+            self.students.remove(expelled_student)
+            print(f'{expelled_student.name} був видалений з {self.name}')
+        else:
+            print(f'{student.name} не був знайдений {self.name}')
 
 class Student:
     def __init__(self, name, grade):
