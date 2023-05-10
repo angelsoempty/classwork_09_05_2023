@@ -23,6 +23,22 @@ class School:
     def add_class(self, class_obj):
         self.classes.append(class_obj)
         print(f'Клас {class_obj.number} був доданий до школи {self.name}')
+    #3 завдання
+    def get_students_by_grade(self, grade):
+        grade_students = [student for student in self.students if student.grade == grade]
+        return grade_students
+
+    def get_school_statistics(self):
+        total_students = len(self.students)
+        average_grade = sum(student.grade for student in self.students) / total_students
+        print(f'Статистика школи {self.name}:')
+        print(f'Загальна кількість студентів: {total_students}')
+        print(f'Середній рівень (бал): {average_grade}')
+        print('Статистика класів:')
+        for class_obj in self.classes:
+            class_obj.get_average_grade()
+    def __str__(self):
+        return self.name
 class Student:
     def __init__(self, name, grade):
         self.name = name
@@ -66,9 +82,14 @@ class Class:
     def add_student(self, student):
         self.students.append(student)
         print(f'{student.name} був доданий до класу {self.number}')
+    def get_average_grade(self):
+        total_students = len(self.students)
+        average_grade = sum(student.grade for student in self.students) / total_students
+        print(f'Середній рівень (бал) для класу {self.number}: {average_grade}')
 
 itstep_teacher = Teacher('Albina', 'Python', ['Class A', 'Class B'])
 my_school.add_teacher(itstep_teacher)
-
+print()
 class1 = Class(1, [lisa, masha])
 my_school.add_class(class1)
+my_school.get_school_statistics()
