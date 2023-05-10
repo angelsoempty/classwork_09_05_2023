@@ -20,8 +20,9 @@ class School:
     def add_teacher(self, teacher):
         self.teacher.append(teacher)
     #2 завдання
-    def
-
+    def add_class(self, class_obj):
+        self.classes.append(class_obj)
+        print(f'Клас {class_obj.number} був доданий до школи {self.name}')
 class Student:
     def __init__(self, name, grade):
         self.name = name
@@ -61,6 +62,13 @@ class Teacher:
 class Class:
     def __init__(self, number, students):
         self.number = number
-        self.studen = []
+        self.students = students
     def add_student(self, student):
         self.students.append(student)
+        print(f'{student.name} був доданий до класу {self.number}')
+
+itstep_teacher = Teacher('Albina', 'Python', ['Class A', 'Class B'])
+my_school.add_teacher(itstep_teacher)
+
+class1 = Class(1, [lisa, masha])
+my_school.add_class(class1)
